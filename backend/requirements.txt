@@ -1,0 +1,30 @@
+# Core dependencies
+fastapi
+uvicorn
+
+# LangChain + Community Modules
+langchain
+langchain-community
+langchain-openai  # If using OpenAI embeddings/models
+langchain-huggingface  # Required for HuggingFace embeddings
+langchain-ollama  # Required for OLLAMA models
+langchain-chromadb  # Required for ChromaDB models
+
+# Vector database for RAG
+chromadb
+
+# LlamaIndex for document processing
+llama-index
+
+# PDF parsing
+pypdf
+
+# Sentence embeddings & Hugging Face models
+sentence-transformers
+huggingface-hub
+
+# Ensure PyTorch is installed correctly (use CPU version by default)
+torch  # Will automatically install the correct version based on your system
+
+# Ensure NumPy version compatibility
+numpy<2.0  # Fixes issues with PyTorch and sentence-transformers
