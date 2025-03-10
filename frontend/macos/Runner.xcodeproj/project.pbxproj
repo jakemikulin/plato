@@ -204,7 +204,6 @@
 				2A841C0926195BF20108B954 /* Pods-RunnerTests.release.xcconfig */,
 				A4C53756661736D08AE22133 /* Pods-RunnerTests.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -235,6 +234,7 @@
 			buildConfigurationList = 33CC10FB2044A3C60003C045 /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
 				192393259B51FE8D3ED584A8 /* [CP] Check Pods Manifest.lock */,
+				EFBCC8D12D7E00E9003EA241 /* Copy Backend */,
 				33CC10E92044A3C60003C045 /* Sources */,
 				33CC10EA2044A3C60003C045 /* Frameworks */,
 				33CC10EB2044A3C60003C045 /* Resources */,
@@ -403,6 +403,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"$FLUTTER_ROOT\"/packages/flutter_tools/bin/macos_assemble.sh && touch Flutter/ephemeral/tripwire";
+		};
+		EFBCC8D12D7E00E9003EA241 /* Copy Backend */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Backend";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/Users/jakemikulin/Desktop/plato/frontend/macos/Runner/RunScript.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
