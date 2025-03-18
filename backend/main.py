@@ -1,13 +1,9 @@
 import os
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from rag import ask_question
-import start_ollama  # This ensures the local Ollama instance is started
 from fastapi.middleware.cors import CORSMiddleware
-
-# Ensure the API uses only the repo-stored models
-os.environ["OLLAMA_MODELS"] = os.path.join(os.path.dirname(__file__), "ollama", "models")
 
 # Initialize FastAPI
 app = FastAPI()
@@ -18,8 +14,13 @@ class Query(BaseModel):
 @app.post("/ask")
 def ask(query: Query):
     """Handles chatbot requests from the frontend."""
-    response = ask_question(query.question)
-    return {"response": response}
+    try:
+        response = ask_question(query.question)
+        if not response:
+            raise HTTPException(status_code=500, detail="No response from LLM.")
+        return {"response": response}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 app.add_middleware(
     CORSMiddleware,
