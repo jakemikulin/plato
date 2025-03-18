@@ -47,7 +47,7 @@ fi
 
 # Wait for Ollama to start
 echo "Giving Ollama time to initialise..."
-sleep 10  
+# sleep 10  
 
 # Start backend in background
 echo "Starting FastAPI backend..."

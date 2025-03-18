@@ -51,13 +51,16 @@ def is_ollama_running():
 # 🔹 Function to handle questions
 def ask_question(query):
     if not is_ollama_running():
-        return "Error: Ollama is not running. Please start Ollama and try again."
+        yield "Error: Ollama is not running. Please start Ollama and try again."
+        return
 
     llm = OllamaLLM(
         model="phi4-mini",
         system_prompt=(
             "You are an empathetic AI assistant specialising in mental health resources for students at The University of Edinburgh. "
             "Keep your responses concise (maximum 500 characters). "
+            "Do not reference the documents"
+            "Talk about the documents as if you know their content as fact"
 
             "Crisis & Support Contacts: "
             "- For emergencies (including suicidal thoughts or self-harm), advise calling 999. "
@@ -76,42 +79,43 @@ def ask_question(query):
             "Always provide specifics tools and options from the retrieved documents such as named resources or strategies."
     )
     )
+    
     retriever = get_retriever()
 
-    # ✅ FIX: Correctly retrieve documents
-    start_retrieval = time.time()
-    docs = retriever.invoke(query)  
-    retrieval_time = time.time() - start_retrieval
-    print(f"\nRetrieval Time: {retrieval_time:.2f} seconds")
+    # ✅ Load chat history
+    chat_history = memory.load_memory_variables({}).get("chat_history", [])
 
-    # If relevant documents are found, format them for context
+    # ✅ Start retrieval
+    start_retrieval = time.time()
+    docs = retriever.invoke(query)[:3]  # Fetch top 3 relevant documents
+    retrieval_time = time.time() - start_retrieval
+    print(f"\n⏳ Retrieval Time: {retrieval_time:.2f} seconds")
+
     if docs:
-        context = "\n\n".join([f"Document {i+1}: {doc.page_content}" for i, doc in enumerate(docs[:3])])
-        print("\nRetrieved Context for LLM:\n")
+        context = "\n\n".join([f"Document {i+1}: {doc.page_content}" for i, doc in enumerate(docs)])
+        print("\n🔍 Retrieved Context for LLM:\n")
         print(context[:500])  # Print first 500 characters for debugging
     else:
-        print("No relevant documents found. Using general model response.")
+        print("❌ No relevant documents found. Using general model response.")
         context = "No relevant documents found."
 
-    # ✅ FIX: Create question-answering chain separately
-    qa_chain = load_qa_chain(llm, chain_type="stuff", prompt=prompt)
+    formatted_chat_history = "\n".join([msg.content for msg in chat_history])
 
-    # ✅ FIX: Ensure correct input format for ConversationalRetrievalChain
-    rag_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=retriever,
-        memory=memory
+    # ✅ Construct final prompt including chat history
+    final_prompt = prompt.format(
+        chat_history=formatted_chat_history,
+        context=context,
+        question=query
     )
 
-    # ✅ FIX: Invoke with chat history (WITHOUT `input_documents`)
-    chat_history = memory.load_memory_variables({}).get("chat_history", "")
+    print("\n🔹 FINAL PROMPT SENT TO LLM:\n")
+    print(final_prompt[:500])  # Print first 500 characters for debugging
 
-    start_llm = time.time()
-    response = rag_chain.invoke({
-        "question": query,
-        "chat_history": chat_history  # ✅ Fix: No `input_documents`
-    })
-    llm_time = time.time() - start_llm
-    print(f"\nLLM Processing Time: {llm_time:.2f} seconds")
+    # ✅ Stream the response
+    full_response = ""  # Store full response for memory saving
+    for chunk in llm.stream(final_prompt):
+        full_response += chunk + " "  # Append to final response
+        yield chunk + " "  # Yield each chunk as it comes
 
-    return response["answer"]  # ✅ Fix: Correct output key
+    # ✅ Update chat memory after the response is completed
+    memory.save_context({"input": query}, {"output": full_response})

@@ -41,13 +41,12 @@ class _ChatPageState extends State<ChatPage> {
     final messageText = messageController.text.trim();
     if (messageText.isEmpty) return;
 
-    // Add user's message
     setState(() {
       messages.add(ChatMessage(text: messageText, isSent: true));
       messageController.clear();
     });
 
-    // Show typing indicator
+    // Add a placeholder message for streaming updates
     setState(() {
       messages.add(ChatMessage(text: '', isSent: false, isTyping: true));
     });
@@ -55,27 +54,61 @@ class _ChatPageState extends State<ChatPage> {
     scrollToBottom();
 
     try {
-      // Send request to FastAPI chatbot
-      final response = await http.post(
-        Uri.parse("http://127.0.0.1:8000/ask"),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode({"question": messageText}),
+      final request = http.Request(
+        'POST',
+        Uri.parse("http://127.0.0.1:8000/ask"), // Streaming FastAPI endpoint
       );
 
-      if (response.statusCode == 200) {
-        final jsonResponse = jsonDecode(response.body);
-        String botResponse = jsonResponse["response"] ?? "I don't know.";
+      request.headers.addAll({"Content-Type": "application/json"});
+      request.body = jsonEncode({"question": messageText});
 
-        // Remove typing indicator and show bot response
-        setState(() {
-          messages.removeWhere((msg) => msg.isTyping ?? false);
-          messages.add(ChatMessage(text: botResponse, isSent: false));
-        });
+      final streamedResponse = await http.Client().send(request);
+
+      if (streamedResponse.statusCode == 200) {
+        final responseStream = streamedResponse.stream.transform(utf8.decoder);
+
+        String botResponse = "";
+        String buffer = ""; // ✅ Buffer to store incomplete words
+        int lastIndex =
+            messages.length - 1; // ✅ Reference to latest bot message
+
+        await for (var chunk in responseStream) {
+          String text = buffer + chunk; // ✅ Prepend buffer to new chunk
+          List<String> words = text.split(RegExp(r'\s+')); // ✅ Split on spaces
+
+          if (words.length > 1) {
+            buffer = words.removeLast(); // ✅ Keep last word if incomplete
+          } else {
+            buffer = ""; // ✅ Clear buffer if all words are complete
+          }
+
+          botResponse +=
+              " " + words.join(" "); // ✅ Append new words to growing response
+
+          setState(() {
+            messages[lastIndex] = ChatMessage(text: botResponse, isSent: false);
+          });
+
+          scrollToBottom();
+        }
+
+        // ✅ Ensure final buffer is added if not empty
+        if (buffer.isNotEmpty) {
+          botResponse += " " + buffer;
+          setState(() {
+            messages[lastIndex] =
+                ChatMessage(text: botResponse, isSent: false, isTyping: false);
+          });
+        } else {
+          setState(() {
+            messages[lastIndex] =
+                ChatMessage(text: botResponse, isSent: false, isTyping: false);
+          });
+        }
       } else {
         throw Exception("Failed to get response");
       }
     } catch (e) {
-      // Remove typing indicator and show error message
       setState(() {
         messages.removeWhere((msg) => msg.isTyping ?? false);
         messages.add(ChatMessage(
@@ -211,15 +244,21 @@ class _ChatPageState extends State<ChatPage> {
   Widget messageWidget(ChatMessage message) {
     bool isSentByUser = message.isSent;
     return Row(
+      crossAxisAlignment:
+          CrossAxisAlignment.end, // ✅ Aligns icon with text bubble
       mainAxisAlignment:
           isSentByUser ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
-        if (!isSentByUser)
+        if (!isSentByUser) // ✅ Ensure avatar only appears for chatbot messages
           const Padding(
             padding: EdgeInsets.only(right: 8.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/bear.png'),
-              radius: 16,
+            child: Align(
+              alignment:
+                  Alignment.bottomLeft, // ✅ Keep the avatar at the bottom
+              child: CircleAvatar(
+                backgroundImage: AssetImage('assets/bear.png'),
+                radius: 16,
+              ),
             ),
           ),
         Flexible(

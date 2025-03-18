@@ -4,6 +4,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from rag import ask_question
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import StreamingResponse
 
 # Initialize FastAPI
 app = FastAPI()
@@ -11,16 +12,11 @@ app = FastAPI()
 class Query(BaseModel):
     question: str
 
+# ✅ Streaming Response in FastAPI
 @app.post("/ask")
-def ask(query: Query):
-    """Handles chatbot requests from the frontend."""
-    try:
-        response = ask_question(query.question)
-        if not response:
-            raise HTTPException(status_code=500, detail="No response from LLM.")
-        return {"response": response}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+async def ask(query: Query):
+    """Handles chatbot requests with a streaming response."""
+    return StreamingResponse(ask_question(query.question), media_type="text/plain")
 
 app.add_middleware(
     CORSMiddleware,
