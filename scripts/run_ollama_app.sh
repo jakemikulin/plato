@@ -46,7 +46,7 @@ else
 fi
 
 # Wait for Ollama to start
-echo "Giving Ollama time to initialize..."
+echo "Giving Ollama time to initialise..."
 sleep 10  
 
 # Start backend in background
@@ -61,5 +61,3 @@ cd ../frontend || { echo "Failed to enter frontend directory!"; exit 1; }
 
 echo "Running Flutter Web App..."
 flutter run -d chrome
-
-echo "Chatbot is fully running!"

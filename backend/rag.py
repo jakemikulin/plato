@@ -20,7 +20,7 @@ def get_retriever():
 memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
 # 🔹 Define custom prompt template
-prompt_template = """You are an AI assistant specializing in mental health resources.
+prompt_template = """
 
 Previous conversation history:
 {chat_history}
@@ -30,8 +30,9 @@ Retrieved documents:
 
 User question: {question}
 
-If the documents do not fully answer the question, provide the best possible answer using general knowledge.
+If the documents do not answer the question, provide the best possible answer using the user question and system prompt ignoring the retrieved documents.
 Keep responses factual and concise.
+
 """
 
 prompt = PromptTemplate(
@@ -50,11 +51,30 @@ def is_ollama_running():
 # 🔹 Function to handle questions
 def ask_question(query):
     if not is_ollama_running():
-        return "⚠️ Error: Ollama is not running. Please start Ollama and try again."
+        return "Error: Ollama is not running. Please start Ollama and try again."
 
     llm = OllamaLLM(
         model="phi4-mini",
-        system_prompt="You are an assistant specializing in mental health resources."
+        system_prompt=(
+            "You are an empathetic AI assistant specialising in mental health resources for students at The University of Edinburgh. "
+            "Keep your responses concise (maximum 500 characters). "
+
+            "Crisis & Support Contacts: "
+            "- For emergencies (including suicidal thoughts or self-harm), advise calling 999. "
+            "- For urgent but non-emergency medical support, direct users to NHS 111. "
+            "- For mental health support, recommend Samaritans, Mind, or SHOUT. "
+
+            "Guidance on Using the Sorted (FeelingGood) App: "
+            "- Tracks 1, 2, and 3 are great for getting started. "
+            "- For depression, recommend tracks 5, 6, 9, and 10. "
+            "- For anxiety, suggest tracks 4, 5, 7, and 8. "
+            "- For stress, advise tracks 5, 8, 10, and 12. "
+            "- For interpersonal issues, suggest tracks 8, 9, 10, and 12. "
+            "- For sleep difficulties, recommend trying the Sleep Better module. "
+
+            "Always prioritise the user's well-being, providing empathetic and resourceful responses."
+            "Always provide specifics tools and options from the retrieved documents such as named resources or strategies."
+    )
     )
     retriever = get_retriever()
 
@@ -62,15 +82,15 @@ def ask_question(query):
     start_retrieval = time.time()
     docs = retriever.invoke(query)  
     retrieval_time = time.time() - start_retrieval
-    print(f"\n⏳ Retrieval Time: {retrieval_time:.2f} seconds")
+    print(f"\nRetrieval Time: {retrieval_time:.2f} seconds")
 
     # If relevant documents are found, format them for context
     if docs:
         context = "\n\n".join([f"Document {i+1}: {doc.page_content}" for i, doc in enumerate(docs[:3])])
-        print("\n🔍 Retrieved Context for LLM:\n")
+        print("\nRetrieved Context for LLM:\n")
         print(context[:500])  # Print first 500 characters for debugging
     else:
-        print("❌ No relevant documents found. Using general model response.")
+        print("No relevant documents found. Using general model response.")
         context = "No relevant documents found."
 
     # ✅ FIX: Create question-answering chain separately
@@ -92,6 +112,6 @@ def ask_question(query):
         "chat_history": chat_history  # ✅ Fix: No `input_documents`
     })
     llm_time = time.time() - start_llm
-    print(f"\n⏳ LLM Processing Time: {llm_time:.2f} seconds")
+    print(f"\nLLM Processing Time: {llm_time:.2f} seconds")
 
     return response["answer"]  # ✅ Fix: Correct output key
