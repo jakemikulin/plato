@@ -23,24 +23,43 @@ if ! ollama list | grep -q "$MODEL_NAME"; then
         echo "Failed to download $MODEL_NAME. Please check your internet connection."
         exit 1
     fi
-    echo "✅ Model downloaded successfully!"
+    echo "Model downloaded successfully!"
 fi
 
 # Navigate to backend
-cd backend
+cd backend || { echo "Failed to enter backend directory!"; exit 1; }
 
 # Activate virtual environment
-source .venv/bin/activate
+if [ -d ".venv" ]; then
+    source .venv/bin/activate
+else
+    echo "Virtual environment (.venv) not found! Run setup_env.sh first."
+    exit 1
+fi
 
-# Start Ollama (system-wide)
-ollama serve &  
+# Check if Ollama is already running
+if ! curl -s http://127.0.0.1:11434/api/tags | grep -q "models"; then
+    echo "Starting Ollama..."
+    ollama serve &  
+else
+    echo "Ollama is already running."
+fi
 
-# Give Ollama time to start
-sleep 5
+# Wait for Ollama to start
+echo "Giving Ollama time to initialize..."
+sleep 10  
 
 # Start backend in background
+echo "Starting FastAPI backend..."
 python3 main.py &  
 
+# Wait for FastAPI to start
+sleep 5  
+
 # Navigate to frontend and run Flutter
-cd ../frontend
+cd ../frontend || { echo "Failed to enter frontend directory!"; exit 1; }
+
+echo "Running Flutter Web App..."
 flutter run -d chrome
+
+echo "Chatbot is fully running!"
