@@ -1,0 +1,118 @@
+Service Level Agreement (SLA)
+for Sorted App User
+by
+Positive Rewards Ltd
+Effective Date: 06-04-2021
+Version
+Approval
+1. Agreement Overview
+This Agreement represents a Service Level Agreement (“SLA” or “Agreement”) between
+Positive Rewards Ltd.(Service Provider) and the Sorted App User, freemium,
+premium or referred, (Customer) for the provisioning of IT services required to support and
+sustain the Sorted App.
+This Agreement remains valid until superseded by a revised agreement mutually endorsed by
+the stakeholders.
+This Agreement outlines the parameters of all IT services covered as they are mutually
+understood by the primary stakeholders. This Agreement does not supersede current
+processes and procedures unless explicitly stated herein.
+2. Goals & Objectives
+The purpose of this Agreement is to ensure that the proper elements and commitments are in place to provide consistent IT service support and delivery to the Customer(s) by the Service Provider(s).
+The goal of this Agreement is to obtain mutual agreement for IT service provision between the Service Provider(s) and Customer(s).
+The objectives of this Agreement are to:
+* Provide clear reference to service ownership, accountability, roles and/or
+responsibilities.
+* Present a clear, concise and measurable description of service provision to the
+customer.
+* Match perceptions of expected service provision with actual service support &
+delivery.
+3. Stakeholders
+The following Service Provider(s) and Customer(s) will be used as the basis of the
+Agreement and represent the primary stakeholders associated with this SLA:
+IT Service Provider(s): Positive Rewards Ltd (“Provider”)
+IT Customer(s): Sorted App User (“Customer”)
+3/6
+Positive Rewards Ltd | registered office: 24 Boswall Road, EH5 3RN | company number SC 719386 | VAT
+registration No 997854532 | www.feelinggood.app | tel: 0131 564 1934|info@positiverewards.co.uk
+4. Periodic Review
+This Agreement is valid from the Effective Date outlined herein and is valid until further
+notice. This Agreement should be reviewed at a minimum once per fiscal year; however, in
+lieu of a review during any period specified, the current Agreement will remain in effect.
+The Business Relationship Manager (“Document Owner”) is responsible for facilitating
+regular reviews of this document. Contents of this document may be amended as required,
+provided mutual agreement is obtained from the primary stakeholders and communicated to
+all affected parties. The Document Owner will incorporate all subsequent revisions and
+obtain mutual agreements / approvals as required.
+Business Relationship Manager: Sheila Ross
+Review Period: Bi-Yearly (6 months)
+Previous Review Date: 06-04-2021
+Next Review Date: 06-10-2021
+5. Service Agreement
+The following detailed service parameters are the responsibility of the Service Provider in the
+ongoing support of this Agreement.
+5.1. Service Scope
+The following Services are covered by this Agreement;
+o Monitored email support
+o Monitoring system performance
+4/6
+Positive Rewards Ltd | registered office: 24 Boswall Road, EH5 3RN | company number SC 719386 | VAT
+registration No 997854532 | www.feelinggood.app | tel: 0131 564 1934|info@positiverewards.co.uk
+5.2. Customer Requirements
+Customer responsibilities and/or requirements in support of this Agreement include:
+* Proper use of the Sorted App
+* Reasonable availability of customer representative(s) when resolving a service
+related incident or request.
+5.3. Service Provider Requirements
+Service Provider responsibilities and/or requirements in support of this Agreement
+include:
+* Meeting response times associated with service related enquiries
+5.4.Service Assumptions
+Assumptions related to in-scope services and/or components include:
+* Changes and updates to the Sorted App will be communicated and
+documented in the whats new section of the App Store.
+* Maximise uptime and speed of response for the online part of the service
+* Deploy software changes regularly, without significant downtime
+* Carry out quality assurance testing regularly
+* Test the service in an environment that's as similar to live as possible
+* Have appropriate monitoring in place, together with a proportionate, sustainable
+plan to respond to problems identified by monitoring
+* Actively work towards fixing any organisational or contractual issues which make
+it difficult to maximise availability
+5/6
+Positive Rewards Ltd | registered office: 24 Boswall Road, EH5 3RN | company number SC 719386 | VAT
+registration No 997854532 | www.feelinggood.app | tel: 0131 564 1934|info@positiverewards.co.uk
+6. Service Management
+Effective support of in-scope services is a result of maintaining consistent service levels. The
+following sections provide relevant details on service availability, monitoring of in-scope
+services and related components.
+6.1. Service Availability and Requests
+Coverage parameters specific to the service(s) covered in this Agreement are as follows:
+* Email support: We will usually reply within 48 hours.
+6.2 Service monitoring & Reporting
+* Monitor customer support ie requests and response time
+* Monitor system performance (response times) and availability (uptime)
+7. Reporting
+* 90% of Customer support requests were answered within 48 hours
+* 98% of customer requests were completed satisfactorily.
+* System uptime over the last year was 99.9%
+* System Performance Response time meets KPI
+•  FAQs
+•  Useful Links
+•  About Us
+•  Contact Us
+•  Research
+•  Testimonials
+•  Our Videos
+•  Terms & Use
+•  Sorted App Terms of Use
+•  Sorted App Privacy Policy
+•  Sorted Teens App T&Cs
+•  Sorted Teens App Privacy Policy
+•  Sorted App Accessibility Statement
+•  Sorted App Service Level Agreement
+•  Sorted Teens
+•  NHS
+•  Higher & Further Education
+•  Schools
+•  Workplace
+•  Videos
+•  Our Podcast

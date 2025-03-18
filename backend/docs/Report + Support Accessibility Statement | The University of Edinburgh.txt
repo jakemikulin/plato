@@ -1,0 +1,56 @@
+The accessibility statement for the online Report + Support platform
+This accessibility statement applies to https://reportandsupport.ed.ac.uk/ 
+This website is run by Information Services Group at the University of Edinburgh. We want as many people as possible to be able to use this website. For example, that means you should be able to:
+We’ve also made the website text as simple as possible to understand.
+AbilityNet has advice on making your device easier to use if you have a disability. This is an external site with suggestions to make your computer more accessible:
+AbilityNet - My Computer My Way
+With a few simple steps you can customise the appearance of our website using your browser settings to make it easier to read and navigate:
+Additional information on how to customise our website appearance
+If you are a member of University staff or a student, you can use the free SensusAccess accessible document conversion service:
+Information on SensusAccess
+We know some parts of this website are not fully accessible:
+If you need information on this website in a different format, including accessible PDF, large print, audio recording or braille:
+We will consider your request and get back to you in 5 working days.
+We are always looking to improve the accessibility of this website. If you find any problems not listed on this page, or think we’re not meeting accessibility requirements, please contact:
+We will consider your request and get back to you in 5 working days.
+The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint please contact the Equality Advisory and Support Service (EASS) directly:
+Contact details for the Equality Advisory and Support Service (EASS)
+The government has produced information on how to report accessibility issues:
+Reporting an accessibility problem on a public sector website
+Contacting us by phone using British Sign Language
+British Sign Language service
+contactSCOTLAND-BSL runs a service for British Sign Language users and all of Scotland’s public bodies using video relay. This enables sign language users to contact public bodies and vice versa. The service operates 24 hours a day, 7 days a week.
+contactSCOTLAND-BSL service details
+The University of Edinburgh is committed to making its websites and applications accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+This website is partially compliant with the Web Content Accessibility Guidelines (WCAG) 2.1 AA standard, due to the non-compliances listed below.
+The full guidelines are available at:
+Web Content Accessibility Guidelines (WCAG) 2.1 AA standard
+Non accessible content
+The content listed below is non-accessible for the following reasons.
+Noncompliance with the accessibility regulations
+The following items to not comply with the WCAG 2.1 AA success criteria:
+Unless specified otherwise, a complete solution, or significant improvement, will be in place for those items within our control by December 2021
+We are not currently claiming that any accessibility problems would be a disproportionate burden to fix.
+Content that’s not within the scope of the accessibility regulations
+At this time, we do not believe that any content is outside the scope of the accessibility regulations.
+What we’re doing to improve accessibility
+We will continue to address the accessibility issues highlighted to deliver a solution or suitable workaround. Unless specified otherwise, a complete solution or significant improvement will be in place for those items within our control by December 2021.
+While we are in the process of resolving these accessibility issues, or where we are unable, we will ensure reasonable adjustments are in place to make sure no user is disadvantaged. As changes are made, we will continue to review accessibility and retest the accessibility of this website.
+This statement was prepared on 27th May 2021. It was last reviewed on 10th June 2021.
+This website was last tested by the University of Edinburgh’s Disability Information team in May 2021, using the Microsoft Edge (84.0.522.52), Mozilla Firefox (78.5.0esr) and Google Chrome (86.0.4240.198) browsers. Although Internet Explorer remains one of the most commonly used browsers by disabled people, specifically due to its accessibility features and compatibility with assistive technology, EventsAir does not support it and it is therefore not compatible. For details on browser use, please refer to a UK government survey:
+UK Government assistive technology browser survey.
+However, Edge, Firefox and especially Chrome are considered the popular browsers when using a screenreader, as confirmed by current world-wide usage levels for different screen readers and browsers:
+Most recent WebAim annual survey.
+The aforementioned three browsers have been used in certain questions for reasons of breadth and variety.
+We tested:
+This article was published on
+          2024-11-12
+
+
+
+              MyEd login 
+
+
+
+            The University of Edinburgh is a charitable body, registered in Scotland, with registration number SC005336, VAT Registration Number GB 592 9507 00, and is acknowledged by the UK authorities as a “Recognised body” which has been granted degree awarding powers.
+          

@@ -1,0 +1,50 @@
+Positive Rewards Ltd. (“Positive Rewards,” “us” or "we") is committed to protecting and respecting your child's/your (“you” or “your”) privacy in connection with your use of The Feeling Good Teens App (“App”), which may be updated from time-to-time at the sole discretion of Positive Rewards.
+This privacy policy (“Privacy Policy") and any other documents referred to herein set forth the basis on which any personal information we collect from you, or that you provide to us, in connection with the App will be processed by us. Please read the following carefully to understand our practices regarding your personal information and how we will collect, use and safeguard your information.
+The App does not collect any personal information, that is any information that could cause you to be identified.
+We use Google Firebase and Google Analytics (“GA”) as a data processor, to process information from the App to allow us to monitor the functioning of the App in terms of its technical function, usability and any therapeutic effects. GA collects data related to the device, IP address and app activities to measure and report statistics about user interactions on the app. The App applies IP masking so your device IP address cannot identify your location & internet connection. IP anonymisation occurs before any data storing or processing. GA does not store nor process complete IP addresses. It is not possible to identify you as a user of the App.
+If you have been given a referral username and password by your school, health or social care professional or other person, which allows you to unlock the tracks free of charge, you cannot be identified from inputting these codes. Data is anonymously aggregated by us for evaluation, with the purpose of monitoring and improving the App and our services. We may share this anonymous data with our partners e.g. Foundation for Positive Mental Health and/or known external bodies such as funders and/or institutions. We do not share this information with other companies that may use it for advertising and marketing.
+Your use of the app is consent to your opting in to allowing us to collect such data.
+We adopt a data minimisation principle, i.e. we only collect and retain data that is necessary for the delivery of our service; on a basis of adequacy, relevancy and limited to what is needed in relation to the purposes for which they are processed. Our data collection processes are compliant with the EU GDPR regulations (General Data Protection Regulations), which provides the following data protection rights for individuals:
+The right to access – You have the right to request us for copies of your personal data.
+The right to rectification – You have the right to request us to correct any information you believe is inaccurate. You also have the right to request us complete the information you believe is incomplete.
+The right to erasure – You have the right to request that us erase your personal data, under certain conditions.
+The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.
+The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.
+The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
+The right to avoid automated decision making.
+If you would like to exercise any of these rights, please contact our Data Controller Dr Alastair Dobbin on info@positiverewards.co.uk and we will respond within one month.
+Our data collection processes are compliant with the EU GDPR regulations (General Data Protection Regulations). Your submitting of these codes is consent to your opting in to allowing us to collect such data.
+We are compliant with the ICO’s Children’s Code, which is a data protection code of practice for online services, such as apps, placing children’s interests first in respect of design and privacy.
+If you, the parent or carer, suspect a child is using this App without permission and are concerned about any data privacy issues please contact us, see details below.
+The security of personal information is important to us. We follow the most recent regulatory EU and NHS standards to protect all information submitted to us, for example through email and websites, both during transmission and once it is received.
+If a security breach takes place, we will quickly establish whether a personal data breach has occurred and, if so, promptly take steps to address it, compliant with ICO, including telling the ICO if required.
+If you have any concerns about a data breach or questions about the security of the App and your information, you can contact our Data Controller Dr Alastair Dobbin on info@positiverewards.co.uk
+As we do not collect your personal data, we cannot provide your personal information to any third party.
+Data collected from the App is stored in the cloud in Google Firebase GA, in anonymised form, by us through a 2-step authentication process. Google does not share data between GA and Google Firebase users. Data is only held for 4 years.
+We may update this Privacy Policy to reflect changes to our information practices. If we make any material changes in the way we collect data or how we use it, these will be documented in the 'Whats new’ app upgrade area in the app store and, if this included personal data you will be asked to consent. This privacy policy is effective on 5th January 2020 and was updated 22nd January 2021.
+Questions, comments and requests regarding this privacy policy are welcomed and should be addressed to info@positiverewards.co.uk
+You have the right to make a complaint at any time to the Information commissioner’s Office (ICO), the UK supervisory authority, in relation to data protection issues and this App. We would appreciate you giving us the opportunity to respond. The ICO can be contacted by calling 0301231113 or by going online at www.ico.org.uk/concerns.  If you are outside the UK you have the right to lodge a complaint with your relevant data protection regulator.
+We are committed to updating the app and it is regularly reviewed and updated yearly.  Feedback from our users is very important to us. We are keen to address users’ issues with the App and welcome your comments, suggestions and queries about this App. You can contact us by emailing  hello@sortedmentalhealth.app and we will try our best to reply within 48 hours.
+Positive Rewards Ltd | registered office: 24 Boswall Road, EH5 3RN | company number SC 719386 |
+VAT registration No 997854532 |   www.feelinggood.app
+•  FAQs
+•  Useful Links
+•  About Us
+•  Contact Us
+•  Research
+•  Testimonials
+•  Our Videos
+•  Terms & Use
+•  Sorted App Terms of Use
+•  Sorted App Privacy Policy
+•  Sorted Teens App T&Cs
+•  Sorted Teens App Privacy Policy
+•  Sorted App Accessibility Statement
+•  Sorted App Service Level Agreement
+•  Sorted Teens
+•  NHS
+•  Higher & Further Education
+•  Schools
+•  Workplace
+•  Videos
+•  Our Podcast

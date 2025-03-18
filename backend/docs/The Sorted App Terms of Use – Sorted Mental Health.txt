@@ -1,0 +1,68 @@
+Please read these terms and conditions carefully: if you do not agree to all of the following terms and conditions of use of this App, please don’t use this App.
+The Sorted Application (the "App") is owned by Positive Rewards Ltd. and used under licence by the Foundation for Positive Mental Health. The use of Positive Rewards Ltd.’s Sorted App (referred to as "we" / "our" / "us") is subject to the terms and conditions set out below. As a user of this App (referred to as "you" / "your"), your use will be deemed to constitute your acceptance of these terms and conditions.
+These Terms of Use contain the entire understanding between you and us and the Foundation for Positive Mental Health in relation to your use of our App and its content but we reserve the right in our sole discretion to modify, alter or otherwise update these terms and conditions and our App at any time without further notice and you agree to be bound by any such modifications, alterations or updates. You should check this from time to time to review the then current version of this App’s Terms of Use.
+Permitted Use of This App 
+The contents of the Sorted App, such as its graphics, images, audio, video, information and other materials contained within or accessed through the App (the “Content”) are copyright and are either owned by or licensed to us and are protected by the laws of the United Kingdom, international treaties and all other applicable intellectual property laws.
+You are permitted to retrieve and display/listen to the Content from this App on the device from which you initially accessed or downloaded it and you may print a single copy of individual pages on paper, solely for your personal non-commercial use.
+Any unauthorised downloading, retransmission, or other copying or modification of any of the contents of any of this App is in breach of statutory or common law rights which could be the subject of legal action.
+You may not republish any of the content of this App in any manner without our prior written consent. Requests to republish, redistribute or syndicate content should be addressed to info@positiverewards.co.uk
+Liability
+The information, materials and functions contained in this App (including audios, text, graphics, links or other items) are provided on an "as is" basis without any warranties of any kind or accuracy or suitability of the Content and assumes no liability for the completeness or accuracy of such Content. The Content is provided for informational and educational purposes only and is not intended to be substituted for professional medical advice, diagnosis or treatment. Always seek the advice of your physician or healthcare provider regarding any medical condition and the risks for your use of and reliance upon any Content contained within or accessed through the App.
+Except to the extent that such liability cannot be limited or excluded by law, in no event will Positive Rewards Ltd  or the Foundation for Positive Mental Health be liable for any direct, indirect, incidental, consequential or special damages of any kind or any damages whatsoever including without limitation those resulting from loss of profit, loss of contracts, goodwill, data information, income,  anticipated savings or business relationship; personal injury physical, emotional or psychological;  whether or not advised of the possibility of such damage, arising out of or in connection with the use of the App and the Content.
+The act of using this App implies that you have read, understood and accepted the above Terms and Conditions of Use and discharge Positive Rewards Ltd and the Foundation for Positive Mental Health from any actions, claims and demands which may be sustained by your use of the App. By using this App you agree that you will be liable for any loss we (or certain people connected with us) suffer as a result of breach of these App Terms of Use by you or by certain people connected with you.
+Data Collection and Use
+We use Google Firebase and Google Analytics to help analyse how users use the App. We do not collect any personal data from you using the App. Google Analytics are able to provide details of activity in the App which we use to evaluation and improve the App.  Questionnaire data is anonymously collected and analysed and similarly used for evaluation purposes. By using this App  you are agreeing to the above collection of data. For more information on our privacy policy please see below.
+Privacy Policy
+Positive Rewards Ltd. (“Positive Rewards,” “us” or "we") is committed to protecting and respecting your privacy in connection with your use of The Sorted App (“App”), which may be updated from time-to-time at the sole discretion of Positive Rewards.
+This privacy policy (“Privacy Policy”) and any other documents referred to herein set forth the basis on which any personal information we collect from you, or that you provide to us, in connection with the App will be processed by us. Please read the following carefully to understand our practices regarding your personal information and how we will collect, use and safeguard your information.
+1. INFORMATION WE COLLECT FROM YOU
+We do not collect any personal information, that is any information that could cause you to be identified. We do collect non-personally identifiable information (non-PII)  - i.e. data that cannot be used on its own to trace, or identify a person.  The non-PII data we collect is age, gender, ethnicity and mood data, which is requested if you choose to complete our in-App questionnaire.
+We use Google Firebase and Google Analytics (“GA”) as a data processor, to process information from the App to allow us to monitor the functioning of the App in terms of its technical function, usability and any therapeutic effects. GA collects data related to the device, ip address and app activities to measure and report statistics about user interactions on the app.  The App applies ip masking so your device ip address cannot identify your location & internet connection. ip anonymisation occurs before any data storing or processing.  GA does not store nor process complete ip addresses.  It is not possible to identify you as a user of the App.
+If you have been given a username and password by a health or social care professional or other person, which allows you to unlock the tracks free of charge, you cannot be identified from inputting these codes.   On entering these codes the App generates a random 8 digit number to enable the App to match questionnaire data at week 0  (depression and anxiety mood scores)  with questionnaires completed later (depression and anxiety mood scores and utility feedback). At no stage is any information collected that could be used to identify you.  Data is anonymously aggregated by us for evaluation, with the purpose of monitoring and improving the App and our services.  We may share this anonymous data with our partners e.g. Foundation for Positive Mental Health and/or known external bodies such as funders and/or institutions. We do not share your information with other companies that may use it for advertising and marketing.
+We adopt a data minimisation principle, i.e. we only collect and retain data that is necessary for the delivery of our service; on a basis of adequacy, relevancy and limited to what is needed in relation to the purposes for which they are processed. Our data collection processes are compliant with the EU GDPR regulations (General Data Protection Regulations), which provides the following data protection rights for individuals:
+The right to access – You have the right to request us for copies of your personal data.
+The right to rectification – You have the right to request us to correct any information you believe is inaccurate. You also have the right to request us complete the information you believe is incomplete.
+The right to erasure – You have the right to request that us erase your personal data, under certain conditions.
+The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.
+The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.
+The right to data portability – You have the right to request that we transfer the data that we have collected to another organisation, or directly to you, under certain conditions.
+The right to have avoid automated decision-making.
+If you would like to exercise any of these rights, please contact our Data Controller Dr Alastair Dobbin on info@positiverewards.co.uk and we will respond within one month.
+Your use of the app is consent to your opting in to allowing us to collect such data as we do.
+We are compliant with the ICO’s Children’s Code, which is a data protection code of practice for online services, such as apps, placing children’s interests first in respect of design and privacy. If you suspect a child is using this App without permission and are concerned about any data privacy issues please contact us, see details below.
+2. CONFIDENTIALITY AND SECURITY
+The security of your personal information is important to us. We follow the most recent regulatory EU and NHS standards to protect all information submitted to us, both during transmission and once it is received.
+If a security breach takes place, we will quickly establish whether a personal data breach has occurred and, if so, promptly take steps to address it, compliant with ICO, including telling the ICO if required.
+If you have any concerns about a data breach or questions about the security of the App and your information you can contact our Data Controller Dr Alastair Dobbin on info@positiverewards.co.uk
+As we do not collect your personal data, we cannot provide your personal information to any third party.
+The developer’s Privacy Policy no longer applies when following links to any third party websites, and users should consult the third party Policy.
+3. WHERE WE STORE YOUR DATA
+Data collected from the App is stored in GA in anonymised form, and is stored securely in the cloud, on Google Firebase, accessed by us through a 2 step authentication process.  GA does not share data between GA users. Data is only held for 4 years.
+4. CHANGES TO OUR PRIVACY POLICY
+We may update this Privacy Policy to reflect changes to our information practices. If we make any substantial changes to the way we collect or use your data, this will be documented in the ‘What’s new’ app upgrade area in the app store and you will be asked to re-consent to this, prior to your continuing use of the App.
+5. CONTACT
+Questions, comments and requests regarding this privacy policy are welcomed and should be addressed to info@positiverewards.co.uk  or alternatively write to Positive Rewards, 24 Boswall Road, EH5 3RN.  This Privacy Policy is effective 16.10.2015 and was last updated on 19th January 2021.
+Updates, queries, comments and complaints
+You have the right to make a complaint at any time to the Information commissioner’s Office (ICO), the UK supervisory authority, in relation to data protection issues and this App. We would appreciate you giving us the opportunity to respond. The ICO can be contacted by calling 0301231113 or by going online at www.ico.org.uk/concerns.  If you are outside the UK you have the right to lodge a complaint with your relevant data protection regulator.
+We are committed to updating the app and it is reviewed regularly and updated yearly. Feedback from our users is very important to us. We are keen to address users’ issues with the App and welcome your comments, suggestions and queries about this App. You can contact us by emailing hello@sortedmentalhealth.app
+•  FAQs
+•  Useful Links
+•  About Us
+•  Contact Us
+•  Research
+•  Testimonials
+•  Our Videos
+•  Terms & Use
+•  Sorted App Terms of Use
+•  Sorted App Privacy Policy
+•  Sorted Teens App T&Cs
+•  Sorted Teens App Privacy Policy
+•  Sorted App Accessibility Statement
+•  Sorted App Service Level Agreement
+•  Sorted Teens
+•  NHS
+•  Higher & Further Education
+•  Schools
+•  Workplace
+•  Videos
+•  Our Podcast

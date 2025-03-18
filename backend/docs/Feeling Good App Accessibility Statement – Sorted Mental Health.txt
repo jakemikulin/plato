@@ -1,0 +1,52 @@
+Accessibility Statement for the Sorted App
+This accessibility statement applies to the Sorted App mobile application. This app is run by Positive Rewards Ltd.
+We want as many people as possible to be able to use this mobile application. We know some parts of this app are not fully accessible:
+Feedback and contact information
+If you need information on this mobile application in a different format like accessible PDF or large print:
+We’ll consider your request and get back to you in 7 working days.
+Reporting accessibility problems with this mobile application
+We’re always looking to improve the accessibility of this mobile application. If you find any problems not listed on this page or think we’re not meeting accessibility requirements, contact: Dr Pawel Orzechowski at Positive Rewards by email pawel@positiverewards.co.uk who is responsible for dealing with these reports.
+Enforcement procedure
+The Equality and Human Rights Commission (EHRC) is responsible for enforcing the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’). If you’re not happy with how we respond to your complaint, contact the Equality Advisory and Support Service (EASS).
+Technical information about this mobile application’s accessibility
+Positive Rewards Ltd is committed to making its mobile application accessible, in accordance with the Public Sector Bodies (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.
+Compliance status
+This mobile application is partially compliant with the Web Content Accessibility Guidelines version 2.1 AA standard, due to the non-compliances and exemptions listed below.
+Non-accessible content
+The content listed below is non-accessible for the following reasons.
+Non-compliance with the accessibility regulations
+Our videos do not have captions, so people with hearing difficulties may not access all of the information. This fails WCAG 2.1 success criterion 1.2.2 (captions).
+We plan to add captions for all videos by September 2021. When we publish new content we’ll make sure our videos meets accessibility standards.
+Our questionnaires do not adjust to large sized text so people using large text cannot complete the forms. This fails WCAG 2.1 success criterion 1.1.1 (non-adjustible content).
+We are working towards finding ways to make the questionnaires adjustable by January 2022.
+Disproportionate burden
+Navigation and accessing information
+Interactive tools and transactions
+We’ve assessed the cost of fixing the issues with navigation and accessing information, and with interactive tools and transactions. We believe that doing so now would be a disproportionate burden within the meaning of the accessibility regulations. We will make another assessment likely to be in a year’s time.
+Content that’s not within the scope of the accessibility regulations
+What we’re doing to improve accessibility
+Our accessibility roadmap planning includes adding captions to videos by the end of 2021 and to increase adjustability of questionnaires by mid 2022. 
+Preparation of this accessibility statement
+This statement was prepared on 18th April 2021. It was last reviewed on 18th April 2021.
+This mobile application was last tested on 16th April 2021. The test was carried out by the Positive Rewards team. 
+•  FAQs
+•  Useful Links
+•  About Us
+•  Contact Us
+•  Research
+•  Testimonials
+•  Our Videos
+•  Terms & Use
+•  Sorted App Terms of Use
+•  Sorted App Privacy Policy
+•  Sorted Teens App T&Cs
+•  Sorted Teens App Privacy Policy
+•  Sorted App Accessibility Statement
+•  Sorted App Service Level Agreement
+•  Sorted Teens
+•  NHS
+•  Higher & Further Education
+•  Schools
+•  Workplace
+•  Videos
+•  Our Podcast
