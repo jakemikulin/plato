@@ -4,6 +4,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
 import time
 import requests
+import re
 
 # 🔹 Load embedding model
 embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en")
@@ -24,7 +25,7 @@ You do not need to talk about eveything in the helpful information,
 User question: {question}
 
 If the context is not relevent provide the best possible answer using what you know.
-Keep responses factual and concise under 500 characters.
+Keep responses factual.
 
 """
 
@@ -40,6 +41,30 @@ def is_ollama_running():
         return response.status_code == 200
     except requests.RequestException:
         return False
+    
+    # Function to clean and format text
+def clean_text(text):
+    """Fix word splits, punctuation, and formatting."""
+    # Fix spaces before/after punctuation
+    text = re.sub(r"\s+([,.;!?])", r"\1", text)  # Remove space before punctuation
+    text = re.sub(r"([(\[])\s+", r"\1", text)  # Fix spaces after opening brackets
+    text = re.sub(r"\s+([)\]])", r"\1", text)  # Fix spaces before closing brackets
+    text = re.sub(r"(\w)\s*-\s*(\w)", r"\1-\2", text)  # Fix hyphenated words
+
+    # Fix slash formatting issues
+    text = re.sub(r"\s*/\s*", r"/", text)  # Remove spaces around slashes
+
+    # Fix single quotes around words (like ' Feeling Good ' → "Feeling Good")
+    text = re.sub(r"\s*'\s*(\w.*?)\s*'\s*", r'"\1"', text)
+
+    # Fix email-like splits
+    text = re.sub(r"\s*@\s*", "@", text)  # Remove spaces around "@"
+    text = re.sub(r"\s*(\.org|\.com|\.net|\.edu)", r"\1", text)  # Fix domain splits
+
+    # Normalize spaces
+    text = " ".join(text.split())
+
+    return text
 
 # 🔹 Function to handle questions
 def ask_question(query):
@@ -49,7 +74,8 @@ def ask_question(query):
 
     llm = OllamaLLM(
         model="plato",
-        streaming=True
+        streaming=True,
+        max_tokens=150
     )
     
     retriever = get_retriever()
@@ -77,11 +103,31 @@ def ask_question(query):
     print("\n🔹 FINAL PROMPT SENT TO LLM:\n")
     print(final_prompt[:500])  # Print first 500 characters for debugging
 
-    # ✅ Stream the response
-    full_response = ""  
+    # Stream the response
+    full_response = ""
+    buffer = ""  # ✅ Store incomplete words
     for chunk in llm.stream(final_prompt):
-        cleaned_chunk = chunk.replace(" ,", ",").replace(" .", ".").replace(" ?", "?").replace(" !", "!")  # ✅ Remove bad spacing
-        cleaned_chunk = " ".join(cleaned_chunk.split())  # ✅ Normalize spaces
-        full_response += cleaned_chunk + " "  
-        yield cleaned_chunk + " "
-    
+        chunk = chunk.strip()  # ✅ Trim spaces before processing
+
+        # ✅ Merge buffered text with new chunk and split words correctly
+        text = buffer + chunk
+        words = text.split(" ")  # ✅ Split words properly
+
+        if len(words) > 1:
+            buffer = words.pop()  # ✅ Keep last word in buffer if incomplete
+        else:
+            buffer = ""  # ✅ Clear buffer if all words are complete
+
+        # ✅ Properly format and yield the words
+        cleaned_text = " ".join(words)
+        cleaned_text = clean_text(cleaned_text)  # Apply formatting fixes
+
+        if cleaned_text:
+            yield cleaned_text + " "
+            full_response += cleaned_text + " "
+
+    # ✅ Ensure the final buffer is included
+    if buffer:
+        buffer = clean_text(buffer.strip())  # Final formatting pass
+        yield buffer + " "
+        full_response += buffer + " "
