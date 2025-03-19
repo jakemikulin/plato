@@ -27,6 +27,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   bool isChatVisible = false;
   bool hasShownGreeting = false;
+  bool isStreaming = false;
 
   List<ChatMessage> messages = [];
   final TextEditingController messageController = TextEditingController();
@@ -45,12 +46,15 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void sendMessage() async {
+    if (isStreaming) return;
+
     final messageText = messageController.text.trim();
     if (messageText.isEmpty) return;
 
     setState(() {
       messages.add(ChatMessage(text: messageText, isSent: true));
       messageController.clear();
+      isStreaming = true;
     });
 
     // Add a placeholder message for streaming updates
@@ -109,6 +113,7 @@ class _ChatPageState extends State<ChatPage> {
         setState(() {
           messages[lastIndex] =
               ChatMessage(text: botResponse, isSent: false, isTyping: false);
+          isStreaming = false;
         });
       } else {
         throw Exception("Failed to get response");
@@ -118,6 +123,7 @@ class _ChatPageState extends State<ChatPage> {
         messages.removeWhere((msg) => msg.isTyping ?? false);
         messages.add(ChatMessage(
             text: "⚠️ Error: Unable to reach chatbot.", isSent: false));
+        isStreaming = false;
       });
     }
 
@@ -293,6 +299,7 @@ class _ChatPageState extends State<ChatPage> {
           child: TextField(
             controller: messageController,
             focusNode: _messageFocusNode,
+            enabled: !isStreaming,
             decoration: const InputDecoration(
               hintText: "Type a message",
               border: OutlineInputBorder(
@@ -309,7 +316,7 @@ class _ChatPageState extends State<ChatPage> {
         ),
         IconButton(
             icon: const Icon(Icons.send, color: Colors.blue),
-            onPressed: sendMessage),
+            onPressed: isStreaming ? null : sendMessage),
       ],
     );
   }
