@@ -26,6 +26,8 @@ class ChatPage extends StatefulWidget {
 
 class _ChatPageState extends State<ChatPage> {
   bool isChatVisible = false;
+  bool hasShownGreeting = false;
+
   List<ChatMessage> messages = [];
   final TextEditingController messageController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
@@ -34,6 +36,11 @@ class _ChatPageState extends State<ChatPage> {
   void toggleChat() {
     setState(() {
       isChatVisible = !isChatVisible;
+
+      if (isChatVisible && !hasShownGreeting) {
+        messages.add(ChatMessage(text: "How can I help you?", isSent: false));
+        hasShownGreeting = true;
+      }
     });
   }
 
@@ -155,7 +162,7 @@ class _ChatPageState extends State<ChatPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome to the Mental Health Chatbot',
+              'Welcome to the Mental Health Chatbot tailored for UoE resources and support',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),

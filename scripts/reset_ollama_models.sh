@@ -18,6 +18,17 @@ if pgrep -x "ollama" > /dev/null; then
     sleep 2  # Give it time to shut down
 fi
 
+# Stop any process using port 8080
+PORT=8080
+if lsof -i :$PORT | grep LISTEN > /dev/null 2>&1; then
+    echo "Stopping process using port $PORT..."
+    lsof -ti :$PORT | xargs kill -9
+    sleep 2  # Give it time to shut down
+    echo "✅ Port $PORT is now free."
+else
+    echo "⚠️ No process found using port $PORT."
+fi
+
 # Remove the custom model from Ollama
 MODEL_NAME="plato"
 if ollama list | grep -q "$MODEL_NAME"; then

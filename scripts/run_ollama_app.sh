@@ -11,6 +11,14 @@ if ! command_exists ollama; then
     exit 1
 fi
 
+# Stop any process using port 8080
+if lsof -ti :8080 > /dev/null 2>&1; then
+    echo "Stopping process on port 8080..."
+    lsof -ti :8080 | xargs kill -9
+    sleep 2
+    echo "Port 8080 is now free."
+fi
+
 # Ensure the required model is available
 MODEL_NAME="phi4-mini"
 CUSTOM_MODEL_NAME="plato"
@@ -105,7 +113,9 @@ python3 main.py &
 sleep 5  
 
 # Navigate to frontend and run Flutter
-cd ../frontend || { echo "Failed to enter frontend directory!"; exit 1; }
+cd ../frontend/build/web
+python3 -m http.server 8080 &  # Simple Python server
 
-echo "Running Flutter Web App..."
-flutter run -d chrome
+# Open Web App in Browser
+sleep 3
+open "http://127.0.0.1:8080"
