@@ -1,4 +1,3 @@
-.venv
 __pychache__
 .DS_Store
-backend/ollama/models
+.venv
