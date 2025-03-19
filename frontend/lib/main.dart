@@ -56,7 +56,7 @@ class _ChatPageState extends State<ChatPage> {
     try {
       final request = http.Request(
         'POST',
-        Uri.parse("http://127.0.0.1:8000/ask"), // Streaming FastAPI endpoint
+        Uri.parse("http://127.0.0.1:8080/ask"), // Streaming FastAPI endpoint
       );
 
       request.headers.addAll({"Content-Type": "application/json"});
@@ -68,13 +68,13 @@ class _ChatPageState extends State<ChatPage> {
         final responseStream = streamedResponse.stream.transform(utf8.decoder);
 
         String botResponse = "";
-        String buffer = ""; // ✅ Buffer to store incomplete words
-        int lastIndex =
-            messages.length - 1; // ✅ Reference to latest bot message
+        String buffer = ""; // ✅ Store incomplete words
+        int lastIndex = messages.length - 1; // ✅ Reference latest bot message
 
         await for (var chunk in responseStream) {
-          String text = buffer + chunk; // ✅ Prepend buffer to new chunk
-          List<String> words = text.split(RegExp(r'\s+')); // ✅ Split on spaces
+          String text = (buffer + chunk).trim(); // ✅ Trim unnecessary spaces
+          List<String> words =
+              text.split(RegExp(r'\s+')); // ✅ Split words properly
 
           if (words.length > 1) {
             buffer = words.removeLast(); // ✅ Keep last word if incomplete
@@ -82,8 +82,10 @@ class _ChatPageState extends State<ChatPage> {
             buffer = ""; // ✅ Clear buffer if all words are complete
           }
 
-          botResponse +=
-              " " + words.join(" "); // ✅ Append new words to growing response
+          botResponse += " " + words.join(" "); // ✅ Append without replacing
+          botResponse = botResponse
+              .replaceAll(RegExp(r'\s+'), ' ')
+              .trim(); // ✅ Normalize spaces
 
           setState(() {
             messages[lastIndex] = ChatMessage(text: botResponse, isSent: false);
@@ -92,19 +94,15 @@ class _ChatPageState extends State<ChatPage> {
           scrollToBottom();
         }
 
-        // ✅ Ensure final buffer is added if not empty
+        // ✅ Ensure final buffer is added
         if (buffer.isNotEmpty) {
-          botResponse += " " + buffer;
-          setState(() {
-            messages[lastIndex] =
-                ChatMessage(text: botResponse, isSent: false, isTyping: false);
-          });
-        } else {
-          setState(() {
-            messages[lastIndex] =
-                ChatMessage(text: botResponse, isSent: false, isTyping: false);
-          });
+          botResponse = (botResponse + " " + buffer).trim();
         }
+
+        setState(() {
+          messages[lastIndex] =
+              ChatMessage(text: botResponse, isSent: false, isTyping: false);
+        });
       } else {
         throw Exception("Failed to get response");
       }
@@ -269,7 +267,12 @@ class _ChatPageState extends State<ChatPage> {
               color: isSentByUser ? Colors.blue[100] : Colors.grey[200],
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Text(message.text, softWrap: true),
+            child: Text(
+              message.text,
+              softWrap: true,
+              overflow: TextOverflow.visible, // ✅ Ensures text wraps correctly
+              textAlign: TextAlign.left, // ✅ Aligns text properly
+            ),
           ),
         ),
       ],

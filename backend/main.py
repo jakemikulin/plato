@@ -16,6 +16,7 @@ class Query(BaseModel):
 @app.post("/ask")
 async def ask(query: Query):
     """Handles chatbot requests with a streaming response."""
+    print(f"\nReceived Query: {query.question}")  # ✅ Log input
     return StreamingResponse(ask_question(query.question), media_type="text/plain")
 
 app.add_middleware(
@@ -27,4 +28,4 @@ app.add_middleware(
 )
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="debug")
+    uvicorn.run(app, host="127.0.0.1", port=8080, log_level="debug")

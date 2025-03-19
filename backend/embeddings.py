@@ -9,7 +9,7 @@ embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en")
 
 def load_and_chunk_documents():
     """Loads PDFs and text files, splits them into smaller chunks."""
-    doc_path = "docs/"
+    doc_path = "sums/"
     loaders = [
         DirectoryLoader(doc_path, glob="*.pdf", loader_cls=PyPDFLoader),
         DirectoryLoader(doc_path, glob="*.txt", loader_cls=TextLoader)
@@ -20,7 +20,7 @@ def load_and_chunk_documents():
         documents.extend(loader.load())
 
     # Split long documents into smaller chunks (~512 tokens each)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=512, chunk_overlap=50)
+    text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=100)
     chunked_docs = text_splitter.split_documents(documents)
 
     return chunked_docs

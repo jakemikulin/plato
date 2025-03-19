@@ -1,7 +1,4 @@
 from langchain_ollama import OllamaLLM
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
-from langchain.chains.question_answering import load_qa_chain
 from langchain_chroma import Chroma  # ✅ FIXED IMPORT
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.prompts import PromptTemplate
@@ -16,28 +13,24 @@ def get_retriever():
     db = Chroma(persist_directory="vectorstore/", embedding_function=embedding_model)
     return db.as_retriever()
 
-# 🔹 Chat memory for conversation history
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-
 # 🔹 Define custom prompt template
 prompt_template = """
 
-Previous conversation history:
-{chat_history}
-
-Retrieved documents:
+The following information may be helpful:\n\n
 {context}
+
+You do not need to talk about eveything in the helpful information,
 
 User question: {question}
 
-If the documents do not answer the question, provide the best possible answer using the user question and system prompt ignoring the retrieved documents.
-Keep responses factual and concise.
+If the context is not relevent provide the best possible answer using what you know.
+Keep responses factual and concise under 500 characters.
 
 """
 
 prompt = PromptTemplate(
     template=prompt_template, 
-    input_variables=["chat_history", "context", "question"]
+    input_variables=["context", "question"]
 )
 
 # 🔹 Ensure Ollama is running before making requests
@@ -55,55 +48,28 @@ def ask_question(query):
         return
 
     llm = OllamaLLM(
-        model="phi4-mini",
-        system_prompt=(
-            "You are an empathetic AI assistant specialising in mental health resources for students at The University of Edinburgh. "
-            "Keep your responses concise (maximum 500 characters). "
-            "Do not reference the documents"
-            "Talk about the documents as if you know their content as fact"
-
-            "Crisis & Support Contacts: "
-            "- For emergencies (including suicidal thoughts or self-harm), advise calling 999. "
-            "- For urgent but non-emergency medical support, direct users to NHS 111. "
-            "- For mental health support, recommend Samaritans, Mind, or SHOUT. "
-
-            "Guidance on Using the Sorted (FeelingGood) App: "
-            "- Tracks 1, 2, and 3 are great for getting started. "
-            "- For depression, recommend tracks 5, 6, 9, and 10. "
-            "- For anxiety, suggest tracks 4, 5, 7, and 8. "
-            "- For stress, advise tracks 5, 8, 10, and 12. "
-            "- For interpersonal issues, suggest tracks 8, 9, 10, and 12. "
-            "- For sleep difficulties, recommend trying the Sleep Better module. "
-
-            "Always prioritise the user's well-being, providing empathetic and resourceful responses."
-            "Always provide specifics tools and options from the retrieved documents such as named resources or strategies."
-    )
+        model="plato",
+        streaming=True
     )
     
     retriever = get_retriever()
 
-    # ✅ Load chat history
-    chat_history = memory.load_memory_variables({}).get("chat_history", [])
-
-    # ✅ Start retrieval
+    # ✅ Start retrieval (No memory, fresh retrieval per query)
     start_retrieval = time.time()
     docs = retriever.invoke(query)[:3]  # Fetch top 3 relevant documents
     retrieval_time = time.time() - start_retrieval
     print(f"\n⏳ Retrieval Time: {retrieval_time:.2f} seconds")
 
     if docs:
-        context = "\n\n".join([f"Document {i+1}: {doc.page_content}" for i, doc in enumerate(docs)])
+        context = "\n\n".join([f"{doc.page_content}" for doc in docs])
         print("\n🔍 Retrieved Context for LLM:\n")
         print(context[:500])  # Print first 500 characters for debugging
     else:
-        print("❌ No relevant documents found. Using general model response.")
-        context = "No relevant documents found."
+        print("No relevant documents found.")
+        context = ""
 
-    formatted_chat_history = "\n".join([msg.content for msg in chat_history])
-
-    # ✅ Construct final prompt including chat history
+    # ✅ Construct final prompt (NO memory)
     final_prompt = prompt.format(
-        chat_history=formatted_chat_history,
         context=context,
         question=query
     )
@@ -112,10 +78,10 @@ def ask_question(query):
     print(final_prompt[:500])  # Print first 500 characters for debugging
 
     # ✅ Stream the response
-    full_response = ""  # Store full response for memory saving
+    full_response = ""  
     for chunk in llm.stream(final_prompt):
-        full_response += chunk + " "  # Append to final response
-        yield chunk + " "  # Yield each chunk as it comes
-
-    # ✅ Update chat memory after the response is completed
-    memory.save_context({"input": query}, {"output": full_response})
+        cleaned_chunk = chunk.replace(" ,", ",").replace(" .", ".").replace(" ?", "?").replace(" !", "!")  # ✅ Remove bad spacing
+        cleaned_chunk = " ".join(cleaned_chunk.split())  # ✅ Normalize spaces
+        full_response += cleaned_chunk + " "  
+        yield cleaned_chunk + " "
+    
