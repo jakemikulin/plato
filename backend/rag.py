@@ -103,31 +103,41 @@ def ask_question(query):
     print("\n🔹 FINAL PROMPT SENT TO LLM:\n")
     print(final_prompt[:500])  # Print first 500 characters for debugging
 
-    # Stream the response
     full_response = ""
-    buffer = ""  # ✅ Store incomplete words
-    for chunk in llm.stream(final_prompt):
-        chunk = chunk.strip()  # ✅ Trim spaces before processing
+    buffer = ""
+    token_count = 0   # ✅ We'll manually track tokens
+    MAX_TOKENS = 150  # ✅ Hard limit
 
-        # ✅ Merge buffered text with new chunk and split words correctly
+    for chunk in llm.stream(final_prompt):
+        chunk = chunk.strip()
+
+        # Merge with buffer to avoid mid-word splits
         text = buffer + chunk
-        words = text.split(" ")  # ✅ Split words properly
+        words = text.split()
 
         if len(words) > 1:
-            buffer = words.pop()  # ✅ Keep last word in buffer if incomplete
+            buffer = words.pop()  # Keep last word in buffer
         else:
-            buffer = ""  # ✅ Clear buffer if all words are complete
+            buffer = ""
 
-        # ✅ Properly format and yield the words
         cleaned_text = " ".join(words)
-        cleaned_text = clean_text(cleaned_text)  # Apply formatting fixes
+        cleaned_text = clean_text(cleaned_text)
 
+        # ✅ Count tokens in this chunk
+        chunk_token_count = len(cleaned_text.split())
+        token_count += chunk_token_count
+
+        # Yield this piece
         if cleaned_text:
             yield cleaned_text + " "
             full_response += cleaned_text + " "
 
-    # ✅ Ensure the final buffer is included
-    if buffer:
-        buffer = clean_text(buffer.strip())  # Final formatting pass
+        # ✅ Manually stop if we exceed token limit
+        if token_count >= MAX_TOKENS:
+            break
+
+    # Add the final buffer if we still have space
+    if buffer and token_count < MAX_TOKENS:
+        buffer = clean_text(buffer.strip())
         yield buffer + " "
         full_response += buffer + " "
